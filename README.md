@@ -1,5 +1,5 @@
 # Automatic-Attandance
-Automatic Attandance for school and company to check 
+Automatic Attandance for school and company to check .
 This reposity for backend 
 
 This is an automatic attendance system for students. 
