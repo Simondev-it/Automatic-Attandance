@@ -1,58 +1,77 @@
-﻿namespace BmiTester
+﻿namespace NumbersTeser
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            PrintBmi(70, 1.7);
+            SumOddEvens();
         }
 
-        // CHALLENGE : TÍNH VÀ IN RA CHỈ SỐ BMI CỦA AI ĐÓ .
-        // BMI ĐO TÌNH TRẠNG MẬP ỐM DỰA TRÊN CÂN NẶNG KG , VÀ CHIỀU CAO M
-        // BMI = CÂN NẶNG / (CHIỀU CAO)^2
-        //BMI [18.5 ..... 24.9]--> CHUẨN 
-
-
-        // TRIẾT LÝ THIẾT KẾ HÀM MLEM : HÀM MLEM LÀ HÀM NHẬN VÀO VÀ TRẢ RA 
-        // HÀM NHẬN VÀO VÀ TRẢ RA LÀ HÀM SẼ DỄ DÀNG SỬ DỤNG Ở NHIỀU NƠI DO NÓ CHỈ LÀ MỘT GIÁ TRỊ NÊN LÀ NÓ SẼ ĐƯỢC TÍNH HỢP VÀO CÁC BIỂU THỨC TÍNH TOÁN KHÁC 
-
-        //HÀM .SQRT(25) CHỈ TRẢ VỀ SỐ 5 , KHÔNG IN RA KẾT QUẢ 
-        // SQRT(25)+ SQRT(100)
-
-        //KĨ THUẬT CÒN CÁI DÂY NỊT 
-        //GetBmiV2 GỌI LÀ TÊN HÀM - SIGNATURE OF A METHOD , DUY NHẤT 
-
-        //{  CODE TRONG HÀM ĐƯỢC GỌI LÀ - THÂN HÀM BODY OF METHOD }
-        //{ IMPLEMENTATION OF A METHOD } 
-        // KĨ THUẬT CHỈ CÒN CÁI DÂY NỊT 
-        // NẾU MÔTJ HÀM MÀ CHỈ CÓ DUY NHẤT 1 LỆNH , TA ĐƯỢC PHÉP RÚT GỌN THÂN HÀM 
-
-        // BỎ LUÔN { BỎ LUÔN CHỮ RETURN , BỎ LUÔN  }
-        // NỐI TÊN HÀM VÀ THÂN HÀM ĐÃ BỊ BỎ GẦN KẾT DÙNG KÍ TỰ ==> 
-        //KĨ THUẬT NÀY ĐƯỢC GỌI LÀ EXPRESSION BODIED , EXPRESSION BODY 
-        // THÂN HÀM NHÌN NHƯ BIỂU THỨC 
-
-        // CẤM TUYỆT ĐỐI KO ĐƯỢC NHẦM LẪN VỚI BIỂU THỨC LAMDA , LAMDA EXPRESSION CŨNG XÀI => NHƯNG Ý NGHĨA KHÁC 
-        // HỌC SAU !!!! 
-        static double GetBmiV2(double weight, double height) => weight / Math.Pow(height, 2);
-            
-        static double GetBmi(double weight , double height)
+        //CHALLENGE #2 : VIẾT HÀM TÍNH TỔNG CÁC SỐ CHẴN TỪ 1 .. 10
+        //                        TÍNH TỔNG CÁCH SỐ LẺ TỪ 1.10
+        // 1 , 3 ,5 ,7 ,9 EXPETED-> 25
+        // 2 , 4 ,6 ,8 ,10 EXPETED-> 30
+        // 
+        static void SumOddEvens()
         {
-            double bmi = weight / Math.Pow(height, 2);
-            return bmi;
-            return weight / Math.Pow(height, 2);
+            var SumE = 0;
+            var SumO = 0;
+            for (int i = 1; i <= 10 ; i++)
+            {
+                if (i % 2  == 0)
+                
+                    SumE += i;
+                else
+                    SumO += i;
+            }
+            Console.WriteLine("Sum odd number: " + SumO);
+            Console.WriteLine("Sum even number: " + SumE);
         }
-        static void PrintBmiV2(double weight, double height)
+
+        //CHALLENGE #1 : VIẾT HÀM IN RA CÁC SỐ TỪ 1 ĐẾN 100 SAU ĐÓ TÍNH TỔNG CÁC SỐ CỦA CHÚNG , IN RA TỔNG CỦA CHÚNG LUÔN
+
+        static void PrintIntergerList()
         {
-            double bmi = weight / Math.Pow(height,2 );
-            Console.WriteLine("BMI (w : {0} ; h : {1}) = {2}", weight, height, bmi);
-            Console.WriteLine($"BMI (w : {weight} ; h : {height}) = {bmi}");
+            Console.WriteLine("The list of number from 1..100");
+            for (int i = 1; i <=100; i++)
+               // Console.WriteLine(i + " ");
+               // Console.WriteLine("{0}" + i);
+                Console.WriteLine($"{i}");
+            // for , if else được quyền bỏ ngoặc nhọn nếu chỉ có 1 lệnh
+            // tính tổng hoy 
+            // y chang java 
+            int sum = 0;
+            for (int i = 1; i <=100; i++)
+            {
+                sum += i;
+                
+            }// app hi vọng trả về 5050 . EXPECTED VALUE 
+            // Lát hồi chạy xem ra số mấy . ACTUAL VALUE 
+            //NẾU EXPECTED = ACTUAL -> HÀM NGON MLEM 
+            //             /=       -> BUG 
+            //UNIT TESTING TRONG SWT301 
+            Console.WriteLine("tổng của các số từ 1 tới 100 là " + sum);
         }
-        static void PrintBmi(double weight ,double height )
+        static void PlayWithVarriables()
         {
-            double bmi = weight / (height * height);
-            Console.WriteLine("BMI (w : {0} ; h : {1}) = {2}", weight,height,bmi);
-            Console.WriteLine($"BMI (w : {weight} ; h : {height}) = {bmi}");
+            //khai báo biến 
+            //biến là một vùng ram được đặt tên chiếm một số byte để lưu data 
+            int a = 5, b = 10;// declare variables and assign value 
+            int c = 5;
+            int d = 10;
+
+            int e; // khai báo trước 
+            e = 15;// gán value 
+
+            var f = 20;// làm biếng khai báo kiểu dữ liệu 
+                       // f sẽ được suy ra có datatype dựa trên value ngta cho nó . vậy f là int trong tình huống này do 20 là int 
+                       //f = 3,14 ; vỡ mặt , biến int là đi gán float, ăn đòn 
+
+            // var g;
+            //g = 25;// báo lỗi do cpu không biết kích thước biến đẻe bố trí ram cho phù hợp , do đó dùng var phải gán ngay value 
+
+
+            // kĩ thuật khai báo biến mà làm biếng chỉ ra data type sẽ được suy luận từ value gán cho nó , gọi là sự suy luận kiểu - TYPE INFERRANCE 
         }
     }
 }
