@@ -1,77 +1,61 @@
-﻿namespace NumbersTeser
+﻿using System.Xml.Serialization;
+
+namespace NullableTester
 {
+
+    // 1 namespace chứa nhiều classs , các class có thể nằm rải rác , riêng rẽ trên từng tâpj tin khác nhauu 
+    // hoặc có thể nằm trong 1 tập tin vật lý như ở dưới đây : class student và class program chung nhau namespace 
+    //NullableTester chung nhau 1 tập tin vật lý 
+    // anh em cuối tuần về chung một nhà 
+    // trong 1 namespace có nhiều class và mấy đứa ngang cơ với class - cungf hạng class : Interface , abstract Class , Delegates
+
+    //KHUYÊN DÙNG : NẾU KHÔNG CÓ GÌ QUÁ ĐẶC BIỆT , THÌ TA NÊN TÁCH MỖI CLASS RA TỪNG FILE RIÊNG LẺ ĐỂ DỄ DÀNG QUẢN LÍ CÁC TẬP TIN , QUẢN LÍ DANH SÁCH CÁC CLASS Ở GÓC ĐỘ DỄ NHÌN , DỄ THỐNG KÊ SỐ LƯỢNG ; KHÔNG NƠI CHƠI GỘP !!!
+    public interface Comparator { }
+    public class Student
+    {
+        //MÌNH THỬ VIẾT CLASS MÀ KHÔNG CHƠI ENCAPSULATION 
+        // KHÔNG ENCAPSULATION NGHĨA LÀ MẶC ÁO XUYÊN THẤU 
+        // GIỐNG PH , Đ DI BĂNG : NHÀ CÓ BAO NHIÊU SỔ ĐỎ KHOE LÊN MẠNG --> PUBLIC 
+        public string id;  // Id :.............
+        public string name;//Name:..............
+        public int yob;//YOB: ..................
+        public double gpa;//GPA :...............
+
+        // class giống như FORM , biểu mẫu , template , BLUE - PRINT , BẢN THIẾT KẾ BẢN PHÁC THẢO, CÁI KHUÔN 
+        // CÓ NHIỀU KHOẢNG HỞ ĐỂ LÁY HỒI FILL VẬT LIỆU VÀO ĐỂ CÓ ĐƯỢC 1 OBJECT , 1 BẢN COPY
+        //ĐỂ CÓ 1 BIỂU MẪU CHO RIÊNG MÌNH - OBJECT (CĂN CƯỚC CÔNG DÂN CỦA MÌNH )TA CẦN PHOTO 1 BẢN FORM - NEW 
+        // SAU ĐÓ TA CẦN ĐỔ INFO VÀO (...)-> CÁI PHỄU PARAMETER --> CONTRUCTOR 
+        // SAU KHI ĐỔ VẬT LIỆU VÀO , ĐIÊN VÒA CÁI FORM ĐƯỢC PHOTO CLONE 
+        // TA CÓ 1 OBJECT VÀ TA NGỒI NHÒM NGÓ NÓ , LẤY TỜ GIẤY XEM LẠI COI ỔN KH -> GET 
+        // SAU ĐÓ TA LẤY GÔM TẨY XÓA XÍU XIU ---> SET/SETTING CHỈNH SỬA TRÊN SẢN PHẨN TRÊN OBJECT 
+
+
+        // CONTRUCTOR , GET/SET   
+
+        //NẾU 1 CLASS KHÔNG LÀM CONTRUCTOR TỨC LÀ KHÔNG LÀM CÁI PHỄU ĐỂ HỨNG VẬT LIỆU ĐƯA VÀO THÌ TA VẪN LUÔN ĐÚC ĐƯỢC 1 OBJECT DEFAULT , OBJECT KHÔNG KHÍ LẤP ĐẦY CÁI KHUÔN , TA CÓ 1 TỜ GIẤY TRẮNG PHOTO CHỪA CHỖ CHO TA GÕ
+        // NẾU CLASS CÁI KHUÔN KHÔNG CÓ CONTRUCTOR , RUNTIME SẼ TỰ TẠO GIÚP TA 1 CÁI PHỄU DEFAULT , PHỄU RỖNG , PHỄU EMPTY NGHĨA LÀ KHÔNG NHẬN ĐẦU VÀO , KHÔNG CÓ CODE BÊN TRONG 
+        public Student() { }
+
+        // SAU KHI CÓ PHỄU / CONTRUCTOR DÙNG ĐỂ NHẬN INFO , OBJECT ĐƯƠC LẤP ĐẦY VẬT LIỆU / INFO , TA CÓ THỂ XEM CHÚNG , FLEX CHÚNG , TRUNG BÀY CHÚNG 
+        public void FlexProfile()
+        {
+            Console.WriteLine($"ID:{id} | NAME:{name} | YOB {yob }  | GPA : {gpa}"   );
+        }
+    }
     internal class Program
     {
         static void Main(string[] args)
         {
-            SumOddEvens();
-        }
+            Student an = new Student();
+            an.FlexProfile();
+            an.id = "SE1";
+            an.name = "An Nguyễn ";
+            an.yob = 2004;
+            an.gpa = 3.98;
+            an.FlexProfile() ;
 
-        //CHALLENGE #2 : VIẾT HÀM TÍNH TỔNG CÁC SỐ CHẴN TỪ 1 .. 10
-        //                        TÍNH TỔNG CÁCH SỐ LẺ TỪ 1.10
-        // 1 , 3 ,5 ,7 ,9 EXPETED-> 25
-        // 2 , 4 ,6 ,8 ,10 EXPETED-> 30
-        // 
-        static void SumOddEvens()
-        {
-            var SumE = 0;
-            var SumO = 0;
-            for (int i = 1; i <= 10 ; i++)
-            {
-                if (i % 2  == 0)
-                
-                    SumE += i;
-                else
-                    SumO += i;
-            }
-            Console.WriteLine("Sum odd number: " + SumO);
-            Console.WriteLine("Sum even number: " + SumE);
-        }
-
-        //CHALLENGE #1 : VIẾT HÀM IN RA CÁC SỐ TỪ 1 ĐẾN 100 SAU ĐÓ TÍNH TỔNG CÁC SỐ CỦA CHÚNG , IN RA TỔNG CỦA CHÚNG LUÔN
-
-        static void PrintIntergerList()
-        {
-            Console.WriteLine("The list of number from 1..100");
-            for (int i = 1; i <=100; i++)
-               // Console.WriteLine(i + " ");
-               // Console.WriteLine("{0}" + i);
-                Console.WriteLine($"{i}");
-            // for , if else được quyền bỏ ngoặc nhọn nếu chỉ có 1 lệnh
-            // tính tổng hoy 
-            // y chang java 
-            int sum = 0;
-            for (int i = 1; i <=100; i++)
-            {
-                sum += i;
-                
-            }// app hi vọng trả về 5050 . EXPECTED VALUE 
-            // Lát hồi chạy xem ra số mấy . ACTUAL VALUE 
-            //NẾU EXPECTED = ACTUAL -> HÀM NGON MLEM 
-            //             /=       -> BUG 
-            //UNIT TESTING TRONG SWT301 
-            Console.WriteLine("tổng của các số từ 1 tới 100 là " + sum);
-        }
-        static void PlayWithVarriables()
-        {
-            //khai báo biến 
-            //biến là một vùng ram được đặt tên chiếm một số byte để lưu data 
-            int a = 5, b = 10;// declare variables and assign value 
-            int c = 5;
-            int d = 10;
-
-            int e; // khai báo trước 
-            e = 15;// gán value 
-
-            var f = 20;// làm biếng khai báo kiểu dữ liệu 
-                       // f sẽ được suy ra có datatype dựa trên value ngta cho nó . vậy f là int trong tình huống này do 20 là int 
-                       //f = 3,14 ; vỡ mặt , biến int là đi gán float, ăn đòn 
-
-            // var g;
-            //g = 25;// báo lỗi do cpu không biết kích thước biến đẻe bố trí ram cho phù hợp , do đó dùng var phải gán ngay value 
-
-
-            // kĩ thuật khai báo biến mà làm biếng chỉ ra data type sẽ được suy luận từ value gán cho nó , gọi là sự suy luận kiểu - TYPE INFERRANCE 
+            an = null;
+            an.FlexProfile();
         }
     }
 }
